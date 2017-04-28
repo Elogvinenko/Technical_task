@@ -4,7 +4,7 @@ Feature: Place a bet
         And I navigate to Football events
 
     Scenario: Place a bet and check results
-        When I select "Sevilla" vs "Celta Vigo" football match
+        When I select "Cardiff" vs "Newcastle" football match
             And I fill 0.05 in bets
         Then total stake is displayed
             And returns are correct

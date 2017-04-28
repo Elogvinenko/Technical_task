@@ -20,15 +20,15 @@ public class MatchPage extends FootBallMatchesPage {
     private WebDriver driver;
 
 
+    //Driver and page initialization
     public void MatchPageInit(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-
+    //Home team win bet selection
     public void betOnHomeTeam() {
         String teamName = getHomeTeam();
-
         WebElement homeWin = driver.findElement(By.xpath("//button[contains(@data-player,'"+teamName+"')]"));
         jsClick(homeWin, driver);
     }

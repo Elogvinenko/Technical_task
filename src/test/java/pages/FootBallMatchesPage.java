@@ -25,28 +25,32 @@ public class FootBallMatchesPage extends FootBallPage {
 
     private WebDriver driver;
 
+    //Driver and page initialization
     public void FootBallMatchesPageInit(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
+    //Saving teams variables, for future usage
     public void initializeTeams(String firstTeam, String secondTeam) {
         homeTeam = firstTeam;
         awayTeam = secondTeam;
     }
 
+    //All daily matches selection, jsClick is used for mobile platform
     public void selectAllMatches() {
         footballButton.click();
         waitUntilShowAllMatchesButtonVisible();
         jsClick(showAllButton,driver);
-        //showAllButton.click();
         waitUntilTodayMatchesButtonVisible();
     }
 
+    //Waiter for filter button
     public void waitUntilTodayMatchesButtonVisible() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(todayFilterButton));
     }
 
+    //Match search and selection, using concatenation in xpath
     public void selectMatch() {
         WebElement match = driver.findElement(By.xpath("//a[contains(@title,'"+homeTeam+" vs "+awayTeam+"')]"));
         match.click();

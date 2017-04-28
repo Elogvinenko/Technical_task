@@ -12,14 +12,19 @@ import java.util.Map;
 /**
  * Created by elogvinenko on 26.04.17.
  */
+//Browsers selection, based on system property
 public class Browsers {
     public static WebDriver getDriver(){
         WebDriver dr;
-        System.setProperty("webdriver.chrome.driver", "lib/chromedriver");
         System.setProperty("webdriver.gecko.driver", "lib/geckodriver");
         switch (System.getProperty("browser","chrome").toLowerCase()){
             case "chrome":
+                System.setProperty("webdriver.chrome.driver", "lib/chromedriver");
                 dr =  new ChromeDriver();
+                break;
+            case "chrome_windows":
+                System.setProperty("webdriver.chrome.driver", "lib/chromedriver.exe");
+                dr = new ChromeDriver();
                 break;
             case "firefox":
                 dr =  new FirefoxDriver();

@@ -20,11 +20,13 @@ public class FootBallPage extends MainPage {
 
     private WebDriver driver;
 
+    //Driver and page initialization
     public void FootBallPageInit(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
+    //Waiter for button
     public void waitUntilShowAllMatchesButtonVisible() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(showAllButton));
     }
